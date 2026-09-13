@@ -265,3 +265,20 @@ Potongan Kode (`index.css` & `cv.css`):
 }
 ```
 Menggunakan pendekatan blok `@media` (Media Queries) untuk mendeteksi ukuran layar pengguna. Saat lebar layar menyusut ke 800px atau 900px (ukuran Tablet dan Ponsel Pintar), orientasi baris Flexbox dikonversi menjadi kolom (`flex-direction: column`), dan sistem Grid ganda disederhanakan menjadi partisi tunggal (`grid-template-columns: 1fr`). Hal ini merespons keterbatasan ruang dengan menumpuk semua konten secara vertikal sehingga tidak ada elemen yang terpotong.
+
+### Hasil Website
+Tampilan Home: 
+
+<img width="1876" height="1081" alt="image" src="https://github.com/user-attachments/assets/aea15f6a-d0a8-474f-a064-bf011fdccc6f" />
+
+Tampilan About:
+
+<img width="1873" height="1081" alt="image" src="https://github.com/user-attachments/assets/cb001543-c72e-4a3a-9c03-4393eb18f996" />
+
+Tampilan CV:
+
+<img width="1872" height="1075" alt="image" src="https://github.com/user-attachments/assets/52f24964-9f8a-434f-9bbf-43440ca957e8" />
+
+Tampilan Proyek:
+
+<img width="1874" height="1079" alt="image" src="https://github.com/user-attachments/assets/928bfad0-7c2d-45da-8cd9-80d8bc0a8943" />
