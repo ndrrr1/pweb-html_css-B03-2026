@@ -5,9 +5,9 @@ Dikerjakan oleh:
 2. Daffa Rifqi As Shidiq (5027251038)
 3. Farrel Muhammad Athasyah Enrizy (5027251100)
 
-### Halaman Landing Page (`index_2.html` & `index_2.css`)
+### Halaman Landing Page (`index.html` & `index.css`)
 
-Kode HTML (`index_2.html`):
+Kode HTML (`index.html`):
 ```
 <!DOCTYPE html>
 <html lang="id">
@@ -52,7 +52,7 @@ Kode HTML (`index_2.html`):
 </html>
 ```
 
-Kode CSS (`index_2.css`):
+Kode CSS (`index.css`):
 ```
 :root { --dark: #101820; --cream: #f8f3eb; --accent: #ffae7a; --white: #ffffff; }
 * { box-sizing: border-box; font-family: Arial, sans-serif; }
@@ -101,8 +101,8 @@ Penjelasan Landing Page:
 
 Halaman ini bertindak sebagai titik masuk utama (beranda) yang memuat perkenalan singkat dan navigasi ke seluruh bagian situs web. Struktur visualnya dibangun menggunakan Flexbox (`display: flex`) untuk memisahkan teks pengantar di sisi kiri dan gambar profil di sisi kanan secara seimbang. Navigasi dibuat menempel di bagian atas layar (`position: sticky`) untuk memudahkan perpindahan halaman kapan saja.
 
-### Halaman Creative CV (`cv_2.html` & `cv_2.css`)
-Kode HTML (`cv_2.html`):
+### Halaman Creative CV (`cv.html` & `cv.css`)
+Kode HTML (`cv.html`):
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -151,7 +151,7 @@ Kode HTML (`cv_2.html`):
 </body>
 </html>
 ```
-Kode CSS (`cv_2.css`):
+Kode CSS (`cv.css`):
 ```
 body { margin: 0; background: #fdfaf6; color: #222; }
 .container { padding: 70px 8%; }
@@ -178,3 +178,90 @@ body { margin: 0; background: #fdfaf6; color: #222; }
 Penjelasan Creative CV:
 
 Halaman ini menampilkan riwayat hidup dengan pendekatan tata letak dua kolom (sidebar asimetris) menggunakan CSS Grid (`grid-template-columns: 310px 1fr`). Identitas visual dan foto ditempatkan di blok gelap sebelah kiri, sedangkan rincian profil, pengalaman kerja, pendidikan, dan metrik keahlian dijabarkan di area putih yang lebih luas di sebelah kanan.
+
+### Requirements
+#### Landing Page & Call to Action
+Potongan Kode (`index.html`):
+```
+<div class="hero-buttons">
+    <a class="btn" href="cv.html">View My CV</a>
+</div>
+```
+Sebuah tautan jangkar (`<a>`) dirancang secara visual menyerupai tombol menggunakan kelas `.btn`. Atribut `href="cv.html"` berfungsi sebagai Call to Action yang langsung memindahkan pengunjung dari Landing Page menuju ke halaman Creative CV.
+
+#### Kelengkapan Creative CV
+Potongan Kode (`cv.html`):
+```
+<aside class="sidebar">
+    <img src="images/profile.jpeg" alt="Profile Photo">
+</aside>
+<main class="content">
+    <section class="profile"><h2>About Me</h2><p>I am an Information Technology student...</p></section>
+    <div class="timeline-item"><h4>Web Developer | Personal Projects</h4></div>
+    <div class="education"><h4>Information Technology</h4></div>
+    <div class="skill-bars"><div><label>HTML & CSS</label><span><i style="width:90%"></i></span></div></div>
+</main>
+```
+Seluruh elemen wajib CV telah disusun dalam tag semantik HTML. Foto profil berada di `.sidebar`, sedangkan deskripsi karakter (About Me), riwayat pengalaman (Experience), pendidikan (Education), dan bilah indikator kemampuan teknis (Skills) tertata secara berurutan di dalam `.content`.
+
+#### Pseudo-Class
+Potongan Kode (`index.css`):
+```
+.nav-links a::after { 
+    width: 0; 
+    transition: 0.3s;
+}
+.nav-links a:hover::after { 
+    width: 100%; 
+}
+```
+Interaktivitas dicapai menggunakan pseudo-class `:hover`. Ketika kursor menyorot menu navigasi, properti `width` pada elemen garis bawah berubah dari 0 menjadi 100%, menciptakan animasi pelebaran visual yang mulus.
+
+#### Position
+Potongan Kode (`index.css`):
+```
+nav { 
+    position: sticky; 
+    top: 0; 
+}
+.nav-links a::after { 
+    position: absolute; 
+    left: 0; 
+    bottom: -8px; 
+}
+```
+Properti `position: sticky;` menjamin batang navigasi akan mengunci posisinya di puncak jendela peramban (browser) meskipun pengguna menggulir halaman ke bawah. Properti `position: absolute;` digunakan untuk memposisikan garis dekorasi tepat di bawah teks menu tanpa mengganggu tata letak dokumen secara keseluruhan.
+
+#### Display, Flex & Grid
+Potongan Kode Display dan Flex (`index.css`) & Grid (`cv.css`):
+```
+.hero { 
+    display: flex; 
+    justify-content: space-between; 
+}
+```
+```
+.cv { 
+    display: grid; 
+    grid-template-columns: 310px 1fr; 
+}
+```
+Flexbox (`display: flex;`) mengatur distribusi ruang horizontal antara bagian teks sambutan dan blok foto profil pada layar awal agar sejajar rapi. Sebaliknya, struktur CSS Grid (`display: grid;`) dikonfigurasi dengan `grid-template-columns: 310px 1fr;` untuk memotong area layar secara permanen menjadi panel kiri selebar 310px dan panel kanan yang bersifat meluas otomatis.
+
+#### Responsive
+Potongan Kode (`index.css` & `cv.css`):
+```
+@media (max-width: 800px) {
+    .hero { 
+        flex-direction: column; 
+    }
+}
+```
+```
+@media (max-width: 900px) {
+    .cv { 
+        grid-template-columns: 1fr; 
+    }
+}
+```
+Menggunakan pendekatan blok `@media` (Media Queries) untuk mendeteksi ukuran layar pengguna. Saat lebar layar menyusut ke 800px atau 900px (ukuran Tablet dan Ponsel Pintar), orientasi baris Flexbox dikonversi menjadi kolom (`flex-direction: column`), dan sistem Grid ganda disederhanakan menjadi partisi tunggal (`grid-template-columns: 1fr`). Hal ini merespons keterbatasan ruang dengan menumpuk semua konten secara vertikal sehingga tidak ada elemen yang terpotong.
